@@ -10,7 +10,7 @@ library(xcms)
 ### SINGLE FILE PROCESSING
 
 # Input file goes here.
-input_filename <- "ACM_sept16_T1R2_GL21_method1.mzXML"
+input_filename <- "ACM_sept16_T1R2_GL2_method1.mzXML"
 
 # Creates a xcmsRaw object
 xraw <- xcmsRaw(input_filename)
@@ -23,7 +23,7 @@ neg_data <- xraw_pos$'FALSE'
 
 # Finds peaks for positive and negative scans
 found_pos <- findPeaks.MSW(pos_data) 
-found_neg <- findPeaks.MSW(neg_data)
+found_neg <- findPeaks.MSW(neg_data, peakScaleRange = 1, amp.Th = .008) # 5 was default
 
 # cuts out data that isn't needed 
 trim_pos <- cbind(found_pos@.Data[,1], found_pos@.Data[,2], found_pos@.Data[,3], found_pos@.Data[,8])
@@ -39,7 +39,12 @@ write.csv(trim_neg, file = paste("neg-", substr(input_filename, 1, nchar(input_f
 ### MULTIPLE FILE PROCESSING
 
 # input filenames as a list. Each element must be in quotes (as a string)
-input_filenames <- c("ACM_sept16_T1R2_GL21_method1.mzXML", "ACM_sept16_T1R3_GL20_method1.mzXML")
+input_filenames <- c(
+  "ACM_sept16_T1R3_GL7_method1.mzXML", 
+  "ACM_sept16_T1R3_GL21_method1.mzXML",
+  "ACM_sept16_T1R2_GL7_method1.mzXML",
+  "ACM_sept16_T1R2_GL2_method1.mzXML"
+  )
 
 # 'loops' through the filenames 
 lapply(input_filenames, function(x){
@@ -56,8 +61,8 @@ lapply(input_filenames, function(x){
   neg_data <- xraw_pos$'FALSE'
   
   # Finds peaks for positive and negative scans
-  found_pos <- findPeaks.MSW(pos_data) 
-  found_neg <- findPeaks.MSW(neg_data)
+  found_pos <- findPeaks.MSW(pos_data, peakScaleRange = 1, amp.Th = .008) 
+  found_neg <- findPeaks.MSW(neg_data, peakScaleRange = 1, amp.Th = .008)
   
   # cuts out data that isn't needed 
   trim_pos <- cbind(found_pos@.Data[,1], found_pos@.Data[,2], found_pos@.Data[,3], found_pos@.Data[,8])

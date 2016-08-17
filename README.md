@@ -1,5 +1,5 @@
 # DIMS
-R Script for direct infusion style test that Dana ran. 
+R Script for direct infusion style data that Dana ran. This was used for leaf spray data, which does not have chromatographic separation similar to direct injection/infusion data.
 
 ## Functionality
 Takes in either a single file or multiple files (mzML or mzXML) and splits it into positive and negative modes. Once split into different modes the script then processes those XCMS Raw objects and ouputs the desired data in a csv. The output csv contains the following data columns: mz, mzmax, mzmin, intensity.

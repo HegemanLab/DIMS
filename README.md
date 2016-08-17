@@ -9,3 +9,6 @@ Takes in either a single file or multiple files (mzML or mzXML) and splits it in
 * Once files are added, run that section of code then run remainder of that section. 
  * if doing the single file processing, 'this section' means lines 13-37
  * if doing the single file processing, 'this section' means lines 42-78
+
+## Hegeman Lab - University of Minnesota Twin-Cities
+This code was developed for use in the Hegeman Lab at the University of Minnesota Twin-Cities. If you use this script in your research, please don't forget to site us. Additionally, if there are any questions about how to use this code, feel free to contact [Adrian Hegeman](hegem007@umn.edu). 
